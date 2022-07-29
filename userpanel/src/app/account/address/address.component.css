@@ -1,0 +1,7 @@
+.animated {
+    background-color: rgb(235, 221, 96);
+    background-position: left top;
+    -webkit-animation-duration: 10s;animation-duration: 10s;
+    -webkit-animation-fill-mode: both;animation-fill-mode: both;
+  }
+  

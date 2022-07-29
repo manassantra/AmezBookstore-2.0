@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-8 col-lg-7 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5 border border-info">
+            <h5 class="card-title text-center mb-5 text-uppercase fw-bold fs-5">Sign Up</h5>
+            <form #signupForm="ngForm" (ngSubmit)="signup()">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="fullName" [(ngModel)]="model.fullName" placeholder="Enter Full Name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                          <select  class="form-control" name="gender" [(ngModel)]="model.gender">
+                            <option disabled> --Select Gender-- </option>
+                            <option value="male" selected>Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" name="userName" [(ngModel)]="model.userName" placeholder="Email : name@example.com">
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" placeholder="Password">
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="mobile" [(ngModel)]="model.mobile" placeholder="Mobile : 9876XXXX01" required>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input mt-2" type="checkbox" (change)="changeCheck($event)" value="" id="agreePolicyCheck">
+                <label class="form-check-label" for="agreePolicyCheck">
+                  I agree all <a href="#">privacy and policy</a>.
+                </label>
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-md {{color}} text-uppercase fw-bold" [disabled]="disabledAgreement" type="submit"><i class="bi bi-gear"></i> Sign Up</button>
+                <div class="float-right mt-2">
+                  <p>Already have an account ! &nbsp; Please <a href="#" class="text-info" routerLink='/account/customer/login'>Log In</a> to continue</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

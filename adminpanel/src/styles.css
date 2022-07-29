@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #dddddd;
+  }
+  
+  ul , li {
+    list-style: none;
+  }
+  /* Sidebar */
+  .sidebar  {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+ }
+
+  .bg-clr {
+    background-color: #2e6eb3;
+  }
+  .item {
+    background-color: #2e649e;
+    width: 239px;
+    margin-left: -45px;
+    text-align: center;
+    z-index: -999;
+    /* border: solid 1px black; */
+  }
+
+  .dropdown-item:hover {
+    background-color: #2e6eb3;
+  }
+  
+  @media (max-width: 991px) {
+    .sidebar {
+      width: 100%;
+    }
+    .item {
+      background-color: #2e649e;
+      text-decoration: white !important;
+      width: auto;
+      margin-right: -45px;
+      align-items: center;
+      text-align: center;
+      /* border: solid 1px black; */
+    }
+  }
+  .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }

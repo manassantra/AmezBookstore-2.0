@@ -1,0 +1,49 @@
+<form #createForm="ngForm" (ngSubmit)="createAddress()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Address</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning alert-dismissible fade show animated" role="alert" *ngIf="errMsg">
+          <strong>Oh ho !</strong> {{errMsg}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="addressLine1" [(ngModel)]="adrsDetails.addressLine1" placeholder="House / Apertment / Floor">
+        </div> 
+        <div class="form-group">
+          <input type="text" class="form-control" name="addressLine2" [(ngModel)]="adrsDetails.addressLine2" placeholder="Street / Landmark">
+        </div>
+        <div class="form-group">
+          <!-- <input type="text" class="form-control col" name="pinCode" [(ngModel)]="adrsDetails.pinCode" placeholder="Pincode"> -->
+          <input type="text" class="form-control col" name="pinCode" [(ngModel)]="adrsDetails.pinCode" placeholder="Pincode">
+          <!-- <select class="form-control col" *ngIf="rsp">
+            <option *ngFor="let ad of result" (click)="onSelect(ad)">{{ad.postalLocation}} , {{ad.district}} , {{ad.postalCode}}</option>
+          </select> -->
+        </div>
+        <div class="form-group form-inline">
+          <input type="text" class="form-control m-1" name="city" [(ngModel)]="adrsDetails.city" placeholder="City">
+          <input type="text" class="form-control" name="town" [(ngModel)]="adrsDetails.town" placeholder="Town/District">
+        </div>
+        <div class="form-group form-inline">
+          <input type="text" class="form-control m-1" name="state" [(ngModel)]="adrsDetails.state" placeholder="State">
+          <input type="text" class="form-control" name="country" [(ngModel)]="adrsDetails.country" placeholder="Country">
+        </div>
+        <div class="form-group form-inline">
+          <label for="addressType">Addres Type : </label>
+          <div class="col m-2" *ngFor="let i of category">
+            <input type="radio" class="form-control mr-2" name="addressType" [(ngModel)]="adrsDetails.addressType" value={{i}}>{{i}}
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info">Save</button>
+      </div>
+    </div>
+  </form>

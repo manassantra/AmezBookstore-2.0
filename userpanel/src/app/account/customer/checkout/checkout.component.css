@@ -1,0 +1,11 @@
+.img-fluid {
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+}
+
+#truncateLongTexts {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+  }

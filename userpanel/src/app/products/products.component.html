@@ -1,0 +1,16 @@
+<div class="container text-center mt-4 mb-4">
+  <div class="row text-center d-flex">
+    <ngx-loading-x [show]="load"></ngx-loading-x>
+    <div class="card m-4 justify-content-center" *ngFor="let item of productList">
+        <div class="product py-4">
+            <div class="text-center"> <img style="height: 150px; width: 180px;" src={{item.avtar}}> </div>
+            <div class="card-body about text-center">
+              <h5>{{item.name}}</h5> <span>₹ {{item.price}}</span>
+            </div>
+            <div class="cart-button mt-3 px-2 d-flex justify-content-between align-items-center"> <button class="btn btn-primary text-uppercase" [routerLink]="['/cart']" (click)="addToCart(item)">Buy Now</button>
+                <div class="add"> <a [routerLink]="['/product-details/'+item.id]"><span class="product_fav"><i class="bi bi-eye-fill"></i></span></a> <span class="product_fav" (click)="addToCart(item)"><i class="bi bi-bag-plus"></i></span> </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<body class="card">
+    <div class="wrapper card">
+        <div class="logo"> 
+            <img src="https://pbs.twimg.com/media/FHOYP98XIAM4C2g?format=jpg&name=small" alt=""> 
+        </div>
+        <div class="text-center mt-2 name"> AMEZ STORE </div>
+        <p class="text-center mt-4">Admin &nbsp; Panel</p>
+        <form class="p-3 mt-2" #loginForm="ngForm" (submit)="login()">
+            <div class="form-field d-flex align-items-center ">
+                <i class="bi bi-person-circle"></i>
+                <input type="text" name="username" [(ngModel)]="model.username" placeholder="Username"> 
+            </div>
+            <div class="form-field d-flex align-items-center"> 
+                <i class="bi bi-key"></i>
+                <input type="{{password}}" name="password" [(ngModel)]="model.password" placeholder="Password"> 
+                <div type="button" class="badge badge-pill mr-2" (click)="decryptData()"><i class="bi {{eyeslash}}"></i></div>
+            </div> 
+            <button type="submit" class="btn mt-3">Login</button>
+        </form>
+        <small class="text-center"><em>Contact with Admin to get <b>Login Id</b> & <b>Password</b></em></small>
+        <!-- <div class="row d-flex justify-content-center">
+            <p><a class="nav-link text-info" href="#" routerLink="/account/signup"><b><em>Signup Here</em></b></a></p>
+        </div> -->
+    </div>
+</body>

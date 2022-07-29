@@ -1,0 +1,50 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="container-fluid m-0" *ngIf="user">
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <app-sidenav></app-sidenav>
+        <!-- Sidebar -->
+  
+        <!-- Navbar -->
+        <app-navbar></app-navbar>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+  
+      <!--Main layout-->
+      <main style="margin-top: 60px;" class="container-fluid">
+        <div class="content d-flex flex-column flex-column-fluid">
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container-fluid mt-2">
+                    <!--begin::Table Widget 6-->
+                    
+                        <router-outlet></router-outlet>
+                    
+                    <!--end::Table Widget 6-->
+                    <!--end::Dashboard-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+      </main>
+      <!--Main layout-->
+</div>
+
+<router-outlet *ngIf="!user"></router-outlet>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

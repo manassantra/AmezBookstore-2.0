@@ -1,0 +1,73 @@
+
+  <div class="container mb-2">
+      
+    <div class="row">
+      <div class="col-md-5 order-md-2 mb-4 mt-2">
+        <h6 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Cart Details</span>
+          <span class="badge badge-secondary badge-pill">{{cartList.length}}</span>
+        </h6>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0 m-2">Product List :</h6>
+              <div class="row mb-1" *ngFor="let i of cartList">
+                <div class="col-sm float-left">
+                  <img class="img-fluid" src="{{i.avtar}}" alt="img">
+                </div>
+                <div class="col-sm">
+                  <p id="truncateLongTexts">{{i.name}}</p>
+                </div>
+                <div class="col-sm float-right">
+                  <label class="badge badge-secondary badge-pill">{{i.qty}}</label>
+                </div>
+              </div>
+              <small class="text-muted float-right">Total Price : <b>{{totalPrice}}</b></small>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-7 order-md-1">
+        <h5 class="mt-2 mb-3 text-muted">Select Billing and Shipping Address</h5>
+      
+        <div id="accordion">
+            <div class="card mb-3">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Select Address
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="form-check p-2 m-2" *ngFor="let li of addressList">
+                        <input class="form-check-input" type="radio" name="addressId" value="{{li._id}}" (click)="addAddress($event)">
+                        <strong>{{li.addressType}}</strong> <br />
+                        <label class="form-check-label" for="exampleRadios1">
+                          {{li.addressLine1}}, {{li.addressLine2}}, {{li.city}} <br />
+                          {{li.town}}, {{li.pinCode}}, {{li.state}}, {{li.country}}
+                        </label>
+                        <a href="#" class="float-right">Edit</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-info mr-2">Add New</button>
+                </div>
+              </div>
+            </div>
+
+    
+        </div>
+
+        <!--   Billing Tab End  [ ]-->
+
+        <div class="mt-2 float-right">
+            <button class="btn btn-md btn-info" routerLink="/account/payment">PROCEED TO PAY</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

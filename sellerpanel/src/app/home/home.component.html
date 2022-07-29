@@ -1,0 +1,147 @@
+<div class="row mt-2">
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row stat-widget-five">
+                    <h1 class="col stat-icon dib flat-color-1">
+                        <i class="bi bi-cash-coin"></i>
+                    </h1>
+                    <div class="col stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-text"><span class="count">{{0000 | currency:'INR'}}</span></div>
+                            <div class="stat-heading">Revenue</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row stat-widget-five">
+                    <h1 class="col stat-icon dib flat-color-1">
+                        <i class="bi bi-boxes"></i>
+                    </h1>
+                    <div class="col stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-text"><span class="count">000</span></div>
+                            <div class="stat-heading">Sales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row stat-widget-five">
+                    <h1 class="col stat-icon dib flat-color-1">
+                        <i class="bi bi-handbag"></i>
+                    </h1>
+                    <div class="col stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-text"><span class="count"><b>{{totalProducts}}</b></span></div>
+                            <div class="stat-heading">Products</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row stat-widget-five">
+                    <h1 class="col stat-icon dib flat-color-1">
+                        <i class="bi bi-people-fill"></i>
+                    </h1>
+                    <div class="col stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-text"><span class="count">000</span></div>
+                            <div class="stat-heading">Clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <!-- column -->
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <!-- title -->
+          <div class="d-md-flex">
+            <div class="mr-auto">
+              <h5 class="card-title mt-2"><i class="bi bi-gift"></i> <b> Top Products</b></h5>
+            </div>
+            <div class="row ml-auto m-2">
+              <div class="dl mr-2">
+                <select class="form-control shadow-none" (change)="changeCategory($event)">
+                  <option value="*" selected>All</option>
+                  <option value="{{i.categoryName}}" *ngFor="let i of productCategory">{{i.categoryName}}</option>
+                </select>
+              </div>
+              <div class="dl mr-2">
+                <select class="form-control shadow-none">
+                  <option value="0" selected="">Monthly</option>
+                  <option value="1">Daily</option>
+                  <option value="2">Weekly</option>
+                  <option value="3">Yearly</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- title -->
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover v-middle border p-2">
+            <thead>
+              <tr class="bg-light text-center">
+                <!-- <th class="border-top-0">#ID</th> -->
+                <th class="border-top-0">Products</th>
+                <th class="border-top-0">ISBN</th>
+                <th class="border-top-0">Price</th>
+                <th class="border-top-0">Description</th>
+                <th class="border-top-0">Categories</th>
+                <th class="border-top-0">Quantities</th>
+                <th class="border-top-0">Active</th>
+                <th class="border-top-0"></th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let li of productList">
+                <!-- <td>{{li.id}}</td> -->
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="m-r-10">
+                      <img style="height: 50px; height: 50px; margin-right: 10px;" src="{{li.avtar}}" class="img-circle" alt="">
+                    </div>
+                    <div class="">
+                      <h6 class="m-b-0">{{li.name}}</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>{{li.ISBN}}</td>
+                <td>{{li.price | currency:'INR'}}</td>
+                <td class="d-inline-block text-truncate" style="max-width: 150px;">{{li.description}}</td>
+                <td>{{li.categories}}</td>
+                <td>{{li.quantity}}</td>
+                <td><span class="badge badge-pill badge-success" style="font-size:7px;">.</span></td>
+                <td>
+                  <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-secondary" routerLink="product/edit/{{li.id}}" data-toggle="modal" data-target="#editProduct"><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+
+.top-bar {
+  font-size: 0.8em !important;
+  margin: 5px !important;
+}
+
+.img-logo {
+  border: solid 1px black !important;
+  border-radius: 50px 50px !important;
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.dropdown-menu a:hover {
+  background-color: black !important;
+  color: white !important;
+ }
+@media screen and (max-width: 600px) {
+  div.top-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10em !important;
+  }
+}
+

@@ -1,0 +1,198 @@
+<div class="container mt-5 mb-4 d-flex justify-content-center" *ngIf="!order">
+    <div class="card col-8">
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <b>No Recent Order</b>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="order">
+    <div class="card card-header mt-3">
+        <div class="row col">
+            <h5 class="col-sm-9" style="font-size: medium;">Recent Orders <span class="badge badge-pill badge-info">{{orderDetails.length}}</span></h5>
+            <div class="col-sm text-center">
+                <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">Order Invoice <i class="bi bi-receipt-cutoff"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="card" *ngFor="let i of orderDetails">
+        <div class="row card-body" style="font-size: smaller;">
+            <div class="col-sm-1">
+                <img src="{{i.avtar}}" style="height: 50px; width: 50px;">
+            </div>
+            <div class="col-sm" id="truncateLongTexts">{{i.name}}</div>
+            <em class="col-sm">Qty. - {{i.qty}}</em> 
+            <div class="col-sm">Price : {{i.price*i.qty | currency:'INR'}}</div>
+            <div class="col-sm">
+                <span class="badge badge-pill badge-success mr-2 text-success" style="font-size: 0.5em">.</span>
+                <b style="font-size: 0.8em; margin-top: 5px;">{{orderManager.OrderState}}</b>
+            </div>
+            <div class="col-sm-3 mt-2 ml-2 mr-2 float-right">
+                <button class="btn btn-sm btn-info">Track Order</button>
+                <button class="btn btn-sm btn-danger">Cancle Order</button>
+            </div>
+        </div>
+    </div>
+    <div class="card card-footer mb-3">
+        <div class="row d-flex justify-content-between" style="font-size: smaller;">
+            <div class="col-6">
+                <b>Payment Id : <strong>{{orderManager.PaymentId | uppercase}}</strong></b>
+            </div>
+            <div class="col-2">
+    
+            </div>
+            <div class="col-4">
+                <b>Total Price : <strong>{{orderManager.TotalPrice | currency:'INR'}}</strong></b>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Invoice Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      
+        <div class="container">
+        <div class="col-md-12">
+            <div class="invoice">
+                <!-- begin invoice-company -->
+                <div class="invoice-company text-inverse f-w-600">
+                    <span class="pull-right hidden-print">
+                    <a (click)="downloadInvoice()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="bi bi-file-pdf"></i> Download PDF</a>
+                    <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="bi bi-printer"></i> Print</a>
+                    </span>
+                    <span class="btn btn-sm close" data-dismiss="modal">x</span>
+                </div>
+                <!-- end invoice-company id="pdf"-->
+            <div class="card container invoice p-5" id="pdf">
+
+                <div class="text-center p">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-sm-7 bg-info p-2"></div>
+                        <div class="col-sm-3 p-2">
+                            <h5 class="text-info" style="font-size: 1rem;"><dt>ORDER &nbsp; INVOICE</dt></h5>
+                        </div>
+                        <div class="col-sm-2 bg-info p-2"></div>
+                    </div>
+                </div>
+                    <!-- begin invoice-header -->
+                <div class="invoice-header">
+                    <div class="float-left">
+                        <h5>Amez Bookstore, Inc</h5>
+                    </div>
+                    <hr />
+
+                    <div class="invoice-to">
+                    <small class="text-info">Shipping Address</small>
+                    <address class="m-t-5 m-b-5">
+                        <strong class="text-inverse">{{customerDetails.fullName | uppercase}}</strong><br>
+                        {{addresDetails.addressLine1}}, {{addresDetails.addressLine2}}<br>
+                        {{addresDetails.town}}, {{addresDetails.city}}, {{addresDetails.pinCode}}<br>
+                        {{addresDetails.state}}, {{addresDetails.country}}<br>
+                        Phone: {{customerDetails.mob}}<br>
+                        Email: {{customerDetails.userName}}
+                    </address>
+                    </div>
+                    <div class="invoice-date text-center">
+                    <small class="text-info">Invoice Details</small>
+                    <div class="date text-inverse m-t-5">Date : {{orderManager.OrderDate | date:'medium'}}</div>
+                    <div class="invoice-detail">
+                        Payment Id : <b style="font-size: 0.8em;">{{orderManager.PaymentId | uppercase}}</b><br>
+                        Payment Mode : Online Payment
+                    </div>
+                    </div>
+                </div>
+                <!-- end invoice-header -->
+                <!-- begin invoice-content -->
+                <div class="invoice-content">
+                    <!-- begin table-responsive -->
+                    <div class="table-responsive">
+                    <table class="table table-invoice table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ORDER DETAILS</th>
+                                <th class="text-center" width="20%">UNIT PRICE</th>
+                                <th class="text-center" width="10%">Qty</th>
+                                <th class="text-right" width="20%">TOTAL PRICE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of orderDetails">
+                                <td>
+                                <strong class="text-inverse">{{item.name}}</strong><br>
+                                <small><b>ISBN : </b> {{item.ISBN}}</small><br>
+                                <small><b>Author : </b> {{item.author}}</small>
+                                </td>
+                                <td class="text-center">{{item.price | currency:'INR'}}</td>
+                                <td class="text-center">{{item.qty}}</td>
+                                <td class="text-right">{{item.price*item.qty | currency:'INR'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <!-- end table-responsive -->
+                    <!-- begin invoice-price -->
+                    <div class="invoice-price">
+                    <div class="invoice-price-left">
+                        <div class="invoice-price-row">
+                            <div class="sub-price">
+                                <small>SUBTOTAL PRICE</small>
+                                <span class="text-inverse">{{orderManager.TotalPrice | currency:'INR'}}</span>
+                            </div>
+                            <div class="sub-price">
+                                <i class="fa fa-plus text-muted"></i>
+                            </div>
+                            <div class="sub-price">
+                                <small>SHIPPING FEE</small>
+                                <span class="text-inverse">{{'0.00' | currency:'INR'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invoice-price-right">
+                        <small><b>TOTAL PRICE</b></small> <span class="f-w-800">{{orderManager.TotalPrice | currency:'INR'}}</span>
+                    </div>
+                    </div>
+                    <!-- end invoice-price -->
+                </div>
+                <!-- end invoice-content -->
+                <!-- begin invoice-note -->
+                <div class="invoice-note">
+                    * Make all cheques payable to Amez Group, Inc<br>
+                    * Payment is not refundable after 7 days of Order purchase date<br>
+                    * If you have any questions , Please contact customer support.
+                </div>
+                <!-- end invoice-note -->
+                <!-- begin invoice-footer -->
+                <div class="invoice-footer">
+                    <p class="text-center m-b-5 f-w-600">
+                    THANK YOU FOR SHOPPING FROM US
+                    </p>
+                    <p class="text-center">
+                    <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>Email : amezstore@contact.in</span>
+                    <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> Tel : +91-9851058072</span>
+                    </p>
+                </div>
+
+                <div class="text-center p">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-sm-6 bg-info p-2"></div>
+                        <div class="col-sm-1 p-2">
+                            <h5 class="text-info text-muted" style="font-size: 0.8rem;"><dt>1</dt></h5>
+                        </div>
+                        <div class="col-sm-5 bg-info p-2"></div>
+                    </div>
+                </div>
+                <!-- end invoice-footer -->
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
